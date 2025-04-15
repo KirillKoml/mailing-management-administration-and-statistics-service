@@ -25,7 +25,7 @@ class PeriodicityAdmin(admin.ModelAdmin):
 @admin.register(Mailing)
 class MailingForMailingAdmin(admin.ModelAdmin):
     """Админка для рассылок"""
-    list_display = ('id', 'mailing_status', 'periodicity')
+    list_display = ('id', 'mailing_status')
 
 
 @admin.register(Attempt)

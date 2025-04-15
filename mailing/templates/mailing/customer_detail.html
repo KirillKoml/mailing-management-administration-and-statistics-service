@@ -1,5 +1,6 @@
 {% extends 'mailing/basic_template.html' %}
 {% load my_tags %}
+{% if user == customer.creator %}
 {% block content %}
 <div class="row text-center">
     <div class="col-3">
@@ -18,3 +19,4 @@
         </div>
     </div>
 {% endblock %}
+{% endif %}

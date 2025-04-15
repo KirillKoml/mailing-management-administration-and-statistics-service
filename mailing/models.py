@@ -56,8 +56,6 @@ class Mailing(models.Model):
     name = models.CharField(max_length=20, verbose_name='Название рассылки')
     date_and_time_of_first_mailing = models.DateTimeField(null=True, blank=True,
                                                           verbose_name='дата и время первой отправки рассылки')
-    periodicity = models.ForeignKey(Periodicity, on_delete=models.SET_NULL, verbose_name="Периодичность рассылки",
-                                    related_name="periodicity", null=True, blank=True)
     mailing_status = models.CharField(max_length=20, default='создана', verbose_name='Статус рассылки')
     message = models.ForeignKey(Message, on_delete=models.SET_NULL, verbose_name="Сообщение рассылки",
                                 related_name="mailing_list_message", null=True, blank=True)
@@ -76,7 +74,7 @@ class Mailing(models.Model):
                                 related_name="creator_mailing", null=True, blank=True)
 
     def __str__(self):
-        return f'{self.periodicity}'
+        return f'{self.mailing_status}'
 
     class Meta:
         verbose_name = "Рассылка"
