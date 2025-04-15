@@ -3,6 +3,7 @@
 {% block content %}
 <div class="row text-center">
     {% for mailing in object_list %}
+    {% if user == mailing.creator %}
     <div class="col-3">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
@@ -22,13 +23,12 @@
                 {% endif %}
                 {% if perms.mailing.can_disable_mailing or user == mailing.creator %}
                 <a class="p-2 btn btn-outline-primary" href="/edit_mailing/{{ mailing.id }}/">Редактировать</a>
-                {% endif %}
-                {% if not perms.mailing.can_disable_mailing %}
                 <a class="p-2 btn btn-outline-primary" href="/delete_mailing/{{ mailing.id }}/">Удалить</a>
                 {% endif %}
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
 {% if not perms.mailing.can_disable_mailing %}

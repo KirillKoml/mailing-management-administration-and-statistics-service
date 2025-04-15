@@ -3,6 +3,7 @@
 {% block content %}
 <div class="row text-center">
     {% for customer in object_list %}
+    {% if user == customer.creator %}
     <div class="col-3">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
@@ -13,6 +14,11 @@
                     <li>{{ customer.last_name }}</li>
                     <li>{{ customer.creator }}</li>
                 </ul>
+                {% if perms.users.can_view_list_of_users %}
+                <a class="p-2 btn btn-outline-primary" href="/info_customer/{{ customer.id }}/">Посмотреть</a>
+                <a class="p-2 btn btn-outline-primary" href="/edit_customer/{{ customer.id }}/">Редактировать</a>
+                <a class="p-2 btn btn-outline-primary" href="/delete_customer/{{ customer.id }}/">Удалить</a>
+                {% endif %}
                 {% if user == customer.creator %}
                 <a class="p-2 btn btn-outline-primary" href="/info_customer/{{ customer.id }}/">Посмотреть</a>
                 <a class="p-2 btn btn-outline-primary" href="/edit_customer/{{ customer.id }}/">Редактировать</a>
@@ -21,6 +27,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
  <a class="p-2 btn btn-outline-primary" href="/create_customer/">Создать нового клиента сервиса</a>

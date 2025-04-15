@@ -3,6 +3,7 @@
 {% block content %}
 <div class="row text-center">
     {% for message in object_list %}
+    {% if user == message.creator %}
     <div class="col-3">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
@@ -19,10 +20,10 @@
                 <a class="p-2 btn btn-outline-primary" href="/delete_message/{{ message.id }}/">Удалить</a>
                 {% endif %}
 
-
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
  <a class="p-2 btn btn-outline-primary" href="/create_message/">Создать новое сообщение для рассылки</a>

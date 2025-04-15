@@ -9,8 +9,8 @@ load_dotenv()
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        user = User.objects.create(email=os.getenv('mail'))
-        user.set_password(os.getenv('password_database'))
+        user = User.objects.create(email='admin@exsample.com')
+        user.set_password('Qwertyu0890')
         user.is_active = True
         user.is_staff = True
         user.is_superuser = True

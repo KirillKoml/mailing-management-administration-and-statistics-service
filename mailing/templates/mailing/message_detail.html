@@ -1,6 +1,7 @@
 {% extends 'mailing/basic_template.html' %}
 {% load my_tags %}
 {% block content %}
+{% if user == message.creator %}
 <div class="row text-center">
     <div class="col-3">
         <div class="card mb-4 box-shadow">
@@ -14,4 +15,5 @@
             </div>
         </div>
     </div>
+{% endif %}
 {% endblock %}
